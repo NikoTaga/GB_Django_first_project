@@ -16,54 +16,25 @@
 
 		{% block content %}
 		<div class="location">
+			{% for locat in location %}
 			<div class="location-1">
 				<i class="fa fa-map-marker fa-5x"></i>
-				<h4>Москва</h4>
+				<h4>{{ locat.toun }}</h4>
 				<div class="contacts">
 					<h5>Телефон</h5>
-					<p>+7-888-888-8888</p>
+					<p>{{ locat.fon }}</p>
 				</div>
 				<div class="contacts">
 					<h5>Email</h5>
-					<p>info@geekshop.ru</p>
+					<p>{{ locat.mail }}</p>
 				</div>
 				<div class="contacts">
 					<h5>Адрес</h5>
-					<p>В пределах МКАД</p>
+					<p>{{ locat.addr }}</p>
 				</div>
 			</div>
-			<div class="location-1">
-				<i class="fa fa-map-marker fa-5x"></i>
-				<h4>Москва</h4>
-				<div class="contacts">
-					<h5>Телефон</h5>
-					<p>+7-888-888-8888</p>
-				</div>
-				<div class="contacts">
-					<h5>Email</h5>
-					<p>info@geekshop.ru</p>
-				</div>
-				<div class="contacts">
-					<h5>Адрес</h5>
-					<p>В пределах МКАД</p>
-				</div>
-			</div>
-			<div class="location-1">
-				<i class="fa fa-map-marker fa-5x"></i>
-				<h4>Москва</h4>
-				<div class="contacts">
-					<h5>Телефон</h5>
-					<p>+7-888-888-8888</p>
-				</div>
-				<div class="contacts">
-					<h5>Email</h5>
-					<p>info@geekshop.ru</p>
-				</div>
-				<div class="contacts">
-					<h5>Адрес</h5>
-					<p>В пределах МКАД</p>
-				</div>
-			</div>
+			{% endfor %}
+			
 		</div>
 
 		<div class="clr"></div>
