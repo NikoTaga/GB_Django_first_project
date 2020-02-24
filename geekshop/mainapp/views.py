@@ -1,58 +1,32 @@
 from django.shortcuts import render
+from .models import ProductCategory, Product
+from django.conf import settings
+
 
 # Create your views here.
 
 def main(request):
     title = 'главная'
-    products = [
-        {
-            "name": 'Отличный стул',
-            "desc": "Расположитесь комфортно.",
-            "img_src": "product-1.jpg",
-            "img_href": "products/",
-            'alt': 'ПРодукт 1'
-        },
-        {
-            "name": 'Стул повышенного качества',
-            "desc": "Не оторваться.",
-            "img_src": "product-2.jpg",
-            "img_href": "products/",
-            'alt': 'ПРодукт 2'
-        }
-    ]
-    content = {'title': title, 'products': products}
+    products = Product.objects.all()
+    content = {
+        'title': title,
+        'products': products,
+        'media_url': settings.MEDIA_URL
+    }
     return render(request, 'mainapp/index.html', content)
 
-def products(request):
+def products(request, pk=None):
     title = 'продукты'
-    links_menu = [
-        {'href': 'products_all', 'name': 'все'},
-        {'href': 'products_home', 'name': 'дом'},
-        {'href': 'products_office', 'name': 'офис'},
-        {'href': 'products_modern', 'name': 'модерн'},
-        {'href': 'products_classic', 'name': 'классика'},
-    ]
-    same_products = [
-        {
-            "name": 'Стул повышенного качества',
-            "desc": "Не оторваться.",
-            "img_src": "product-11.jpg",
-            'alt': 'Продукт 1'
-        },
-         {
-            "name": 'Стул превосходного качества',
-            "desc": "Не наглядеться.",
-            "img_src": "product-21.jpg",
-            'alt': 'Продукт 2'
-        },
-         {
-            "name": 'Стул потрясающего качества',
-            "desc": "Не насидеться.",
-            "img_src": "product-31.jpg",
-            'alt': 'Продукт 3'
-        },
-    ]
-    content = {'title': title, 'links_menu': links_menu, 'same_products': same_products}
+    links_menu = ProductCategory.objects.all()
+    same_products = Product.objects.all()
+    content = {
+        'title': title,
+        'links_menu': links_menu,
+        'same_products': same_products,
+        'media_url': settings.MEDIA_URL
+    }
+    if pk:
+        print(f'выбранная категория{pk}')
     return render(request, 'mainapp/products.html', content)
 
 def contact(request):

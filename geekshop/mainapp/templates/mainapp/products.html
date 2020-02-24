@@ -67,11 +67,14 @@
 				<div class="related-products clearfix">
 					{% for same_prod in same_products %}
 					<div class="block">
-						<a href="#"><img src="{% static 'img/' %}{{ same_prod.img_src }}" alt="{{ same_prod.alt }}">
+						<a href="#"><img src="{{ media_url }}{{ same_prod.image }}" alt="{{ same_prod.short_desc }}">
 							<div class="text">
 								<img src="{% static 'img/icon-hover.png' %}" alt="img">
+								<h3>{{ same_prod.category.name }}</h3>
 								<h4>{{ same_prod.name }}</h4>
-								<p>{{ same_prod.desc }}</p>
+								<p>{{ same_prod.description }}</p>
+								<p>Цена: {{ same_prod.price }}</p>
+								<p>Количество {{ same_prod.quantity }}</p>
 							</div>
 						</a>
 					</div>
