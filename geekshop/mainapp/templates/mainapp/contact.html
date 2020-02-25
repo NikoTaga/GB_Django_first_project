@@ -1,0 +1,42 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+		{% block menu  %}
+		<div class="hero">
+			<div class="header clearfix">
+				<a href="{% url 'main' %}" class="logo"></a>
+				{% include 'mainapp/includes/inc_menu.html' %}
+				<a href="#" class="search"></a>
+                <a href="#" class="basket"></a>
+			</div>
+			<h1>наши контакты</h1>
+		</div>
+		{% endblock menu %}
+
+		{% block content %}
+		<div class="location">
+			{% for locat in location %}
+			<div class="location-1">
+				<i class="fa fa-map-marker fa-5x"></i>
+				<h4>{{ locat.toun }}</h4>
+				<div class="contacts">
+					<h5>Телефон</h5>
+					<p>{{ locat.fon }}</p>
+				</div>
+				<div class="contacts">
+					<h5>Email</h5>
+					<p>{{ locat.mail }}</p>
+				</div>
+				<div class="contacts">
+					<h5>Адрес</h5>
+					<p>{{ locat.addr }}</p>
+				</div>
+			</div>
+			{% endfor %}
+			
+		</div>
+
+		<div class="clr"></div>
+		{% endblock content %}
+	
